@@ -12,7 +12,7 @@ export class AuthUser {
     type: String,
     default: () => randomUUID()
   })
-  id: string;
+  id?: string;
 
   @Prop({
     required: true,
@@ -29,6 +29,10 @@ export class AuthUser {
   constructor(partial: Partial<AuthUser>) {
     Object.assign(this, partial);
   }
+}
+
+export class JwtUser {
+  id: string;
 }
 
 export const AuthUserSchema = SchemaFactory.createForClass(AuthUser);

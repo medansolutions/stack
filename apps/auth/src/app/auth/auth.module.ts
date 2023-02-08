@@ -19,15 +19,23 @@ import { AuthController } from './auth.controller';
       useFactory: async (configService: ConfigService) => {
         return {
           secret: configService.get<string>('SECRET_KEY'),
-          signOptions: { expiresIn: '240m' },
+          signOptions: { expiresIn: '240m' }
         };
-      },
+      }
     }),
     MongooseModule.forFeature([{
       name: 'user', schema: AuthUserSchema
     }])
   ],
   controllers: [AuthController],
-  providers: [AuthService, LocalStrategy, JwtStrategy]
+  providers: [
+    AuthService,
+    LocalStrategy,
+    JwtStrategy
+  ],
+  exports: [
+    AuthService
+  ]
 })
-export class AuthModule {}
+export class AuthModule {
+}

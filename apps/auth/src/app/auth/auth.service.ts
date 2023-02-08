@@ -18,7 +18,7 @@ export class AuthService {
     const payload = { sub: user.id };
 
     return {
-      accessToken: this.jwtService.sign(payload),
+      accessToken: this.jwtService.sign(payload)
     };
   }
 
@@ -27,12 +27,10 @@ export class AuthService {
     const user = await this.getAuthUser({ username });
 
     if (!user) {
-      throw new BadRequestException({
-        code: 'user_not_found'
-      });
+      throw new BadRequestException({code: 'user_not_found'});
     }
 
-    const passwordValid = bcrypt.compare(
+    const passwordValid = await bcrypt.compare(
       password,
       user.password
     );
@@ -45,7 +43,15 @@ export class AuthService {
   }
 
   @SerializeDocument(AuthUser)
+  async getUser(query: object): Promise<AuthUser> {
+    return this.userModel.findOne(query);
+  }
+
   async getAuthUser(query: object): Promise<AuthUser> {
     return this.userModel.findOne(query);
+  }
+
+  async createUser(user: AuthUser): Promise<AuthUser | null> {
+    return this.userModel.create(user);
   }
 }
