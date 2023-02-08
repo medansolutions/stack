@@ -15,7 +15,13 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@stack/utils": ["libs/utils/src/index.ts"]
+      "@stack/auth/guards": ["libs/auth/guards/src/index.ts"],
+      "@stack/utils/exception-factory": [
+        "libs/utils/exception-factory/src/index.ts"
+      ],
+      "@stack/utils/mongo-serialize-doc": [
+        "libs/utils/mongo-serialize-doc/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]

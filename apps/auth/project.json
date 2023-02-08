@@ -20,7 +20,13 @@
         "production": {
           "optimization": true,
           "extractLicenses": true,
-          "inspect": false
+          "inspect": false,
+          "fileReplacements": [
+            {
+              "replace": "apps/bottom-line-api/src/environments/environment.ts",
+              "with": "apps/bottom-line-api/src/environments/environment.prod.ts"
+            }
+          ]
         }
       }
     },

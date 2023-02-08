@@ -1,11 +1,11 @@
 import { NestFactory } from '@nestjs/core';
-import { AuthModule } from './app/auth.module';
+import { AppModule } from './app/app.module';
 import helmet from 'helmet';
 import { ValidationPipe } from '@nestjs/common';
-import { ExceptionFactory } from '@stack/utils';
+import { ExceptionFactory } from '@stack/utils/exception-factory';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AuthModule);
+  const app = await NestFactory.create(AppModule);
   app.enableCors();
   app.use(helmet());
 

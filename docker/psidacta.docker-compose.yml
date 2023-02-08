@@ -1,0 +1,23 @@
+version: "3.9"
+services:
+  auth:
+    container_name: auth
+    image: auth
+    build:
+      context: .
+      dockerfile: ../apps/auth/Dockerfile
+    ports:
+      - "22944:3000"
+    environment:
+      - PORT=3000
+    volumes:
+      - "${PWD}:/app"
+      - "${PWD}/node_modules:/app/node_modules"
+
+  mongo-db:
+    container_name: mongo-db
+    image: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./.db-psidacta:/data/db:rw

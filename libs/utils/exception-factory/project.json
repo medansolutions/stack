@@ -1,21 +1,21 @@
 {
-  "name": "utils",
-  "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/utils/src",
+  "name": "utils-exception-factory",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/utils/exception-factory/src",
   "projectType": "library",
   "targets": {
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["libs/utils/**/*.ts"]
+        "lintFilePatterns": ["libs/utils/exception-factory/**/*.ts"]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "libs/utils/jest.config.ts",
+        "jestConfig": "libs/utils/exception-factory/jest.config.ts",
         "passWithNoTests": true
       }
     }
